@@ -1,0 +1,32 @@
+.features{
+    grid-column: center-start / center-end;
+
+    margin: 15rem 0;
+    
+    display: grid;
+    // grid-template-columns: repeat(3, 1fr);  1frで3つの列
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // 25rem以上1fr以下のwidthにおさまるように自動で列数を決定する。今回の場合、.conteinerのwidth内に収めるには25rem以上のセルは3つまでしか許容できないので最大3つのセルでcolumnsが決定される 
+    // grid-template-rows: auto auto;  implicit rowが自動で生成されるので必要ない
+    grid-gap: 6rem;
+    align-items: start; // grid-cellは一番大きいセルにサイズを合わせようとして色々とずれるので、startに設定する
+}
+
+.feature{
+
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon{
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        grid-row: 1 / span 2;  // 1 / -1 の -1 はexplicit gridにのみ適用される。今回はExplicitにrowを定義してないのでspanでやっている
+        transform: translateY(-1rem);
+    }
+
+    &__text{
+        font-size: 1.7rem;
+    }
+}
